@@ -74,7 +74,7 @@ def listar_pagamentos():
         return
     print("\nLista de pagamentos:\n")
     for i, pagui in enumerate(pagamentos, 1):
-        print(f"{i}. Cliente: {pagui['nome']} | Valor: R${pagui['valor']:.2f} | Método: {pagui['tipo']}")
+        print(f"{i}. Cliente: {pag['cliente']} | Cpf: {pag['cpf']} | Valor: R${pag['valor']:.2f} | Método: {pag['metodo']} | Contato: {pag['contato']} | Endereço: {pag['endereco']}")
 
 #salva pagamentos em arquivo .CSV
 def salvar_csv():
@@ -82,7 +82,7 @@ def salvar_csv():
         print("\nNenhum pagamento para salvar.\n")
         return
     with open("pagamentos.csv", "w", newline="", encoding="utf-8") as arquivo:
-        entrada_dados= ["nome", "valor", "tipo"]
+        entrada_dados= ["cliente", "cpf", "valor", "metodo", "contato", "endereco"]
         escreva= csv.DictWriter(arquivo, fieldnames= entrada_dados)
         escreva.writeheader()
         escreva.writerows(pagamentos)
